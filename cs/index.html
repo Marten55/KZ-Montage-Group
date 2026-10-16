@@ -259,25 +259,54 @@
     <section class="process" id="jak-to-probihá" aria-labelledby="process-heading">
         <div class="container">
             <header class="section-head">
-                <p class="eyebrow eyebrow--accent" data-aos="fade-up">Průběh spolupráce</p>
-                <h2 id="process-heading" class="section-head__title" data-aos="fade-up" data-aos-delay="80">Jak to probíhá</h2>
+                <p class="eyebrow eyebrow--accent" data-aos="fade-up">Jak to probíhá</p>
+                <h2 id="process-heading" class="section-head__title" data-aos="fade-up" data-aos-delay="80">Stěhování výrobní linky ve čtyřech fázích</h2>
             </header>
-            <ol class="process__steps" data-aos="fade-up" data-aos-delay="160">
-                <li class="process__step"><span class="process__num">01</span><span class="process__label">Komunikace se zákazníkem</span></li>
-                <li class="process__step"><span class="process__num">02</span><span class="process__label">Záloha softwaru</span></li>
-                <li class="process__step"><span class="process__num">03</span><span class="process__label">Odpojení</span></li>
-                <li class="process__step"><span class="process__num">04</span><span class="process__label">Demontáž linky</span></li>
-                <li class="process__step"><span class="process__num">05</span><span class="process__label">Čištění linky</span></li>
-                <li class="process__step"><span class="process__num">06</span><span class="process__label">Zabalení</span></li>
-                <li class="process__step"><span class="process__num">07</span><span class="process__label">Naložení</span></li>
-                <li class="process__step"><span class="process__num">08</span><span class="process__label">Převoz</span></li>
-                <li class="process__step"><span class="process__num">09</span><span class="process__label">Kontrola</span></li>
-                <li class="process__step"><span class="process__num">10</span><span class="process__label">Zaměření nového místa a pozice</span></li>
-                <li class="process__step"><span class="process__num">11</span><span class="process__label">Vyložení a rozbalení</span></li>
-                <li class="process__step"><span class="process__num">12</span><span class="process__label">Ustavení s následnou nivelací</span></li>
-                <li class="process__step"><span class="process__num">13</span><span class="process__label">Zapojení</span></li>
-                <li class="process__step"><span class="process__num">14</span><span class="process__label">Uvádění do provozu</span></li>
-                <li class="process__step"><span class="process__num">15</span><span class="process__label">Produkce</span></li>
+            <!-- Pôvodných 15 krokov zoskupených do 4 fáz. Kroky ostali doslovne, pribudli len názvy fáz a jedna veta k nim. -->
+            <ol class="faze" data-aos="fade-up" data-aos-delay="160">
+                <li class="faze__item">
+                    <span class="faze__num">01</span>
+                    <h3 class="faze__title">Příprava</h3>
+                    <p class="faze__lede">Domluvíme rozsah a termín, linku připravíme k odstávce.</p>
+                    <ul class="faze__steps">
+                        <li>Komunikace se zákazníkem</li>
+                        <li>Záloha softwaru</li>
+                        <li>Odpojení</li>
+                    </ul>
+                </li>
+                <li class="faze__item">
+                    <span class="faze__num">02</span>
+                    <h3 class="faze__title">Demontáž a převoz</h3>
+                    <p class="faze__lede">Linku rozebereme, vyčistíme a bezpečně přepravíme.</p>
+                    <ul class="faze__steps">
+                        <li>Demontáž linky</li>
+                        <li>Čištění linky</li>
+                        <li>Zabalení</li>
+                        <li>Naložení</li>
+                        <li>Převoz</li>
+                    </ul>
+                </li>
+                <li class="faze__item">
+                    <span class="faze__num">03</span>
+                    <h3 class="faze__title">Instalace na novém místě</h3>
+                    <p class="faze__lede">Zaměříme pozici a linku přesně usadíme.</p>
+                    <ul class="faze__steps">
+                        <li>Kontrola</li>
+                        <li>Zaměření nového místa a pozice</li>
+                        <li>Vyložení a rozbalení</li>
+                        <li>Ustavení s následnou nivelací</li>
+                    </ul>
+                </li>
+                <li class="faze__item">
+                    <span class="faze__num">04</span>
+                    <h3 class="faze__title">Uvedení do provozu</h3>
+                    <p class="faze__lede">Linku zapojíme a předáme až ve chvíli, kdy vyrábí.</p>
+                    <ul class="faze__steps">
+                        <li>Zapojení</li>
+                        <li>Uvádění do provozu</li>
+                        <li>Produkce</li>
+                    </ul>
+                </li>
             </ol>
         </div>
     </section>
@@ -381,11 +410,22 @@
     <!-- ====================================================== -->
     <section class="about" id="o-mne" aria-labelledby="about-heading">
         <div class="container about__inner">
-            <aside class="about__timeline" aria-hidden="true">
-                <span class="about__year">2004</span>
-                <span class="about__year about__year--mid">2014</span>
-                <span class="about__year">2026</span>
-            </aside>
+            <!-- Míľniky s popisom. 2025 podľa obchodného registra (ARES: vznik 3. 1. 2025).
+                 2014 doplní klient — NÁHĽAD: bez potvrdenia rok vynechať, nie vymyslieť. -->
+            <ol class="milniky" aria-label="Milníky">
+                <li class="milniky__item">
+                    <span class="milniky__year">2004</span>
+                    <span class="milniky__text">Začátek praxe průmyslového mechanika</span>
+                </li>
+                <li class="milniky__item milniky__item--doplnit">
+                    <span class="milniky__year">2014</span>
+                    <span class="milniky__text">Doplní klient: co se v tomto roce změnilo</span>
+                </li>
+                <li class="milniky__item">
+                    <span class="milniky__year">2025</span>
+                    <span class="milniky__text">Založení KZ Montage Group spol. s r.o.</span>
+                </li>
+            </ol>
             <div class="about__text">
                 <p class="eyebrow eyebrow--accent" data-aos="fade-up">O nás</p>
                 <h2 id="about-heading" class="about__heading" data-aos="fade-up" data-aos-delay="80">

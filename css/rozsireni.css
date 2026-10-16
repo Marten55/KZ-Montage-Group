@@ -244,6 +244,137 @@
     color: var(--text-mute);
 }
 
+/* ---------- Postup: 4 fázy namiesto 15 bodov ---------------
+   Čiara spája čísla fáz, aby bolo vidno, že na seba nadväzujú.
+   Na počítači vodorovne, na mobile zvislo. */
+.faze {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2.5rem;
+    list-style: none;
+}
+.faze__item {
+    position: relative;
+    display: grid;
+    align-content: start;
+    gap: 0.75rem;
+}
+.faze__num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.25rem;
+    height: 3.25rem;
+    font-family: var(--font-mono);
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--accent-strong);
+    background: var(--bg-deep);
+    border: 1px solid var(--accent);
+    position: relative;
+    z-index: 1;
+}
+/* Spojnica od čísla k číslu nasledujúcej fázy (cez medzeru stĺpcov) */
+.faze__item:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    top: 1.625rem;                      /* stred čísla */
+    left: 3.25rem;
+    right: -2.5rem;                     /* = gap */
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--rule-strong) 100%);
+}
+.faze__title {
+    margin-top: 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--text);
+}
+.faze__lede {
+    color: var(--text-mute);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+}
+.faze__steps {
+    display: grid;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    list-style: none;
+}
+.faze__steps li {
+    position: relative;
+    padding-left: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--text-mute);
+}
+.faze__steps li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 0.4rem;
+    height: 1px;
+    background: var(--accent);
+}
+
+/* ---------- O nás: míľniky s popisom ----------------------- */
+.milniky {
+    list-style: none;
+    display: grid;
+    align-content: start;
+    gap: 2rem;
+    width: 15rem;
+    position: relative;
+    padding-top: 0.5rem;
+}
+.milniky::before {                      /* zvislá os */
+    content: '';
+    position: absolute;
+    left: 0.3rem;
+    top: 0.75rem;
+    bottom: 0.75rem;
+    width: 1px;
+    background: var(--rule-strong);
+}
+.milniky__item {
+    position: relative;
+    display: grid;
+    gap: 0.25rem;
+    padding-left: 1.75rem;
+}
+.milniky__item::before {                /* bod na osi */
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.35rem;
+    width: 0.65rem;
+    height: 0.65rem;
+    background: var(--accent);
+}
+.milniky__year {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--accent-strong);
+    letter-spacing: 0.06em;
+}
+.milniky__text {
+    font-size: 0.9375rem;
+    line-height: 1.45;
+    color: var(--text-mute);
+}
+/* Náhľad: rok čaká na potvrdenie od klienta — musí to byť vidno */
+.milniky__item--doplnit .milniky__text {
+    font-style: italic;
+    color: #facc15;
+}
+.milniky__item--doplnit::before { background: transparent; border: 1px dashed #facc15; }
+
 /* ---------- Pruh náhľadu (pred nasadením odstrániť) -------- */
 .nahled {
     position: fixed;
@@ -264,6 +395,24 @@
 /* ---------- Responzívne ------------------------------------ */
 @media (max-width: 960px) {
     .reference__grid { grid-template-columns: 1fr; }
+
+    /* Fázy pod sebou, spojnica zvislo vľavo */
+    .faze { grid-template-columns: 1fr; gap: 2.5rem; }
+    .faze__item { padding-left: 4.5rem; }
+    .faze__num { position: absolute; left: 0; top: 0; }
+    .faze__title { margin-top: 0.6rem; }
+    .faze__item:not(:last-child)::before {
+        top: 3.25rem;
+        bottom: -2.5rem;
+        left: 1.625rem;
+        right: auto;
+        width: 1px;
+        height: auto;
+        background: linear-gradient(180deg, var(--accent) 0%, var(--rule-strong) 100%);
+    }
+
+    /* Míľniky: pôvodná os sa na mobile skrývala — s textom má zmysel aj tu */
+    .milniky { width: auto; gap: 1.25rem; }
 }
 @media (max-width: 640px) {
     .poptavka { padding: 1.5rem 1.25rem; }
