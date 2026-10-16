@@ -802,7 +802,8 @@ a.contact__value:focus-visible { color: var(--accent-strong); }
 .footer__inner {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;            /* jediná položka po odstránení odkazu na autora */
+    text-align: center;
     flex-wrap: wrap;
     gap: 0.75rem;
     font-family: var(--font-mono);
