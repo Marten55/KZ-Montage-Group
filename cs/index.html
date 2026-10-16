@@ -522,6 +522,10 @@
         </div>
     </footer>
 
+    <!-- Na mobile sa tlačidlo v hlavičke nezmestí, preto lišta dole. Ukáže sa až po prvej obrazovke a skryje sa pri formulári.
+         Musí byť PRED skriptami: poptavka.js ju hľadá hneď pri načítaní. -->
+    <a href="#poptavka" class="cta-float btn btn--primary" hidden>Poptat montáž</a>
+
     <!-- ====================================================== -->
     <!-- SCRIPTS                                                 -->
     <!-- ====================================================== -->
@@ -569,9 +573,6 @@
     <script src="../js/header-arc.js"></script>
     <script src="../js/galerie.js"></script>
     <script src="../js/poptavka.js"></script>
-
-    <!-- Na mobile sa tlačidlo v hlavičke nezmestí, preto lišta dole. Ukáže sa až po prvej obrazovke a skryje sa pri formulári. -->
-    <a href="#poptavka" class="cta-float btn btn--primary" hidden>Poptat montáž</a>
 
     <!-- NÁHĽAD: pred nasadením odstrániť -->
     <div class="nahled" role="note">Náhled návrhu úprav · nejde o ostrý web</div>
