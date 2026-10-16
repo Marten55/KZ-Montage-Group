@@ -329,6 +329,7 @@
     align-content: start;
     gap: 2rem;
     width: 15rem;
+    align-self: start;                  /* inak sa natiahne na výšku textu a os prečnieva pod posledný rok */
     position: relative;
     padding-top: 0.5rem;
 }
