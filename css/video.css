@@ -1,0 +1,72 @@
+/* Video facade — náhľad s tlačidlom, YouTube sa načíta až po kliknutí. Zdieľajú ho galéria aj úvodná stránka. */
+.video-card {
+    display: flex;
+    flex-direction: column;
+}
+.video-facade-wrap {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: var(--bg-deep);
+    overflow: hidden;
+}
+.video-facade-wrap iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+.video-facade {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    background: none;
+    display: block;
+}
+.video-facade__poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.82);
+    transition: filter 0.2s ease;
+}
+.video-facade:hover .video-facade__poster,
+.video-facade:focus-visible .video-facade__poster {
+    filter: brightness(1);
+}
+.video-facade__play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    transition: transform 0.2s ease;
+}
+.video-facade:hover .video-facade__play,
+.video-facade:focus-visible .video-facade__play {
+    transform: scale(1.12);
+}
+.video-facade__play svg circle {
+    transition: fill 0.18s ease;
+}
+.video-facade:hover .video-facade__play svg circle {
+    fill: var(--accent);
+}
+.video-card__caption {
+    padding: 0.75rem 0 0;
+    font-size: 0.8125rem;
+    color: var(--text-mute);
+    line-height: 1.55;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .video-facade__poster { transition: none; }
+    .video-facade__play { transition: none; }
+}

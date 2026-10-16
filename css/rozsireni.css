@@ -1,0 +1,287 @@
+/* ========================================================
+   Rozšírenia k pôvodnému dizajnu (ADM Technics, 2026):
+   dopytový formulár, výzvy k dopytu, realizácie s videami, referencie.
+   Používa výhradne tokeny z kzmontage.css, aby ladilo s pôvodným webom.
+   ======================================================== */
+
+:root {
+    --ok: #4ade80;               /* potvrdenie odoslania; pôvodná paleta zelenú nemá */
+}
+
+/* ---------- Výzvy k dopytu --------------------------------- */
+.topbar__cta {
+    padding: 0.55rem 1rem;
+    font-size: 0.75rem;
+    flex: 0 0 auto;
+}
+/* S novým tlačidlom by sa logo stlačilo na pár pixelov. Logo sa nezmenšuje,
+   kontakty v hlavičke ustúpia skôr (e-mail a LinkedIn sú aj v sekcii Kontakt). */
+.topbar__brand { flex: 0 0 auto; }
+@media (max-width: 1100px) {
+    .topbar__link[href*="linkedin"] { display: none; }
+}
+@media (max-width: 900px) {
+    .topbar__link[href^="mailto"] { display: none; }
+}
+
+.section-cta {
+    margin-top: 3rem;
+    color: var(--text-mute);
+    font-size: 1.0625rem;
+}
+.section-cta a,
+.poptavka__legal a,
+.footer__copy a {
+    color: var(--accent-strong);
+    border-bottom: 1px solid var(--accent);
+    transition: color 0.18s ease;
+}
+.section-cta a { margin-left: 0.35rem; }
+.section-cta a:hover,
+.poptavka__legal a:hover,
+.footer__copy a:hover { color: var(--text); }
+.footer__copy a { color: var(--text-mute); border-bottom-color: var(--rule-strong); }
+
+/* Mobilná lišta: tlačidlo v hlavičke sa pod 560 px nezmestí */
+.cta-float { display: none; }
+
+/* ---------- Realizácie: videá pod mriežkou ----------------- */
+.realizace__videos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+.realizace__video-note {
+    margin-top: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-mute);
+}
+
+/* ---------- Referencie ------------------------------------- */
+.reference {
+    padding: var(--section-pad);
+    background: var(--bg);
+    scroll-margin-top: calc(var(--topbar-offset) + 1rem);
+}
+.reference__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+.reference__card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 2rem;
+    border: 1px solid var(--rule);
+    background: var(--bg-alt);
+}
+.reference__card blockquote {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--text);
+}
+.reference__card figcaption {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    color: var(--text-mute);
+}
+.reference__card figcaption strong { color: var(--text); font-weight: 500; }
+/* Prázdne miesto v náhľade musí na prvý pohľad vyzerať ako prázdne, nie ako hotový citát */
+.reference__card--placeholder {
+    background: transparent;
+    border-style: dashed;
+    border-color: var(--rule-strong);
+}
+.reference__card--placeholder blockquote { color: var(--text-mute); font-style: italic; }
+
+/* ---------- Dopytový formulár ------------------------------ */
+.contact .section-head { margin-bottom: 3rem; }
+
+.poptavka {
+    display: grid;
+    gap: 1.5rem;
+    max-width: 880px;
+    margin: 0 auto 3.5rem;
+    padding: 2.5rem;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    scroll-margin-top: calc(var(--topbar-offset) + 1rem);
+}
+.poptavka__row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+.poptavka__field {
+    display: grid;
+    gap: 0.5rem;
+    min-width: 0;
+    border: 0;
+}
+.poptavka label,
+.poptavka legend {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+}
+.poptavka__opt {
+    margin-left: 0.4rem;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    color: var(--text-dim);
+}
+.poptavka input[type="text"],
+.poptavka input[type="email"],
+.poptavka input[type="tel"],
+.poptavka textarea {
+    width: 100%;
+    min-height: 48px;
+    padding: 0.8rem 1rem;
+    font: inherit;
+    font-size: 1rem;              /* 16 px: menej by iOS pri ťuknutí zoomoval */
+    color: var(--text);
+    background: var(--bg-deep);
+    border: 1px solid var(--rule-strong);
+    border-radius: 0;
+    transition: border-color 0.18s ease;
+}
+.poptavka textarea { resize: vertical; min-height: 140px; }
+.poptavka input::placeholder,
+.poptavka textarea::placeholder { color: var(--text-dim); }
+.poptavka input:focus,
+.poptavka textarea:focus { border-color: var(--accent-strong); }
+.poptavka [aria-invalid="true"] { border-color: var(--accent); }
+
+.poptavka__error {
+    display: none;
+    font-size: 0.8125rem;
+    color: var(--accent-strong);
+}
+.poptavka__error.is-visible { display: block; }
+
+/* Typ práce ako „čipy“: rýchlejšie než rozbaľovací zoznam a dá sa vybrať viac */
+.poptavka__types {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.poptavka__types legend { margin-bottom: 0.5rem; padding: 0; }
+.chip { position: relative; cursor: pointer; }
+.chip input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+}
+.poptavka .chip span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 1rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--text-mute);
+    border: 1px solid var(--rule-strong);
+    transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
+}
+.chip:hover span { border-color: var(--text-mute); color: var(--text); }
+.chip input:checked + span {
+    color: var(--text);
+    border-color: var(--accent);
+    background: var(--accent-dim);
+}
+.chip input:focus-visible + span { outline: 2px solid var(--accent-strong); outline-offset: 3px; }
+
+/* Pasca na roboty: mimo obrazovky, nie display:none — niektoré roboty skryté polia preskakujú */
+.poptavka__hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.poptavka__foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.5rem;
+}
+.poptavka__foot .btn:disabled { opacity: 0.6; cursor: progress; transform: none; }
+.poptavka__legal {
+    flex: 1 1 280px;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--text-mute);
+}
+
+.poptavka__status {
+    padding: 1rem 1.25rem;
+    border-left: 2px solid var(--ok);
+    background: var(--bg-alt);
+    line-height: 1.6;
+}
+.poptavka__status.is-error { border-left-color: var(--accent); }
+.poptavka__status a { color: var(--accent-strong); border-bottom: 1px solid var(--accent); }
+
+.contact__or {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+}
+
+/* ---------- Pruh náhľadu (pred nasadením odstrániť) -------- */
+.nahled {
+    position: fixed;
+    top: var(--topbar-offset);
+    left: 0;
+    right: 0;
+    z-index: 49;
+    padding: 0.35rem 1rem;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bg-deep);
+    background: var(--accent-strong);
+}
+
+/* ---------- Responzívne ------------------------------------ */
+@media (max-width: 960px) {
+    .reference__grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+    .poptavka { padding: 1.5rem 1.25rem; }
+    .poptavka__row { grid-template-columns: 1fr; }
+    .realizace__videos { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+    .topbar__cta { display: none; }
+    .cta-float {
+        display: flex;
+        position: fixed;
+        left: max(1rem, env(safe-area-inset-left, 0px));
+        right: max(1rem, env(safe-area-inset-right, 0px));
+        bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+        z-index: 40;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+    }
+    /* .btn nastavuje display, takže atribút hidden by sám nezabral */
+    .cta-float[hidden] { display: none; }
+    .poptavka__foot .btn { width: 100%; }
+}

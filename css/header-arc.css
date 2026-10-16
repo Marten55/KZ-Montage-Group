@@ -1,0 +1,67 @@
+/* =========================================================================
+   header-arc.css — welding arc effect for .topbar
+   Line:    #arc-line   (div injected by header-arc.js, box-shadow set by JS)
+   Canvas:  #arc-canvas (element injected by header-arc.js)
+   ========================================================================= */
+
+/* ── Border removal ───────────────────────────────────────────────────────── */
+
+.topbar--arc {
+    border-bottom: none;
+}
+
+/* ── Arc line ─────────────────────────────────────────────────────────────── */
+
+#arc-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    /* Bright core fades at edges — hottest in the middle of a long run */
+    background: linear-gradient(
+        90deg,
+        transparent                   0%,
+        rgba(200, 230, 255, 0.25)     7%,
+        rgba(220, 240, 255, 0.75)    22%,
+        #ffffff                      50%,
+        rgba(220, 240, 255, 0.75)    78%,
+        rgba(200, 230, 255, 0.25)    93%,
+        transparent                 100%
+    );
+    /* Fallback shadow before JS sets it on first frame */
+    box-shadow:
+        0 0 2px  rgba(200, 230, 255, 0.42),
+        0 0 6px  rgba(106, 184, 255, 0.16),
+        0 0 14px rgba(106, 184, 255, 0.07);
+    pointer-events: none;
+}
+
+/* ── Canvas ───────────────────────────────────────────────────────────────── */
+
+#arc-canvas {
+    position: fixed;
+    top: var(--topbar-offset, 56px);
+    left: 0;
+    right: 0;
+    /* height set by JS to match CANVAS_H constant */
+    pointer-events: none;
+    z-index: 49; /* below header (50), above page content */
+}
+
+/* ── Reduced motion ───────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+    /* No particles */
+    #arc-canvas {
+        display: none;
+    }
+
+    /* Static non-pulsing glow — JS still runs but changes are imperceptible */
+    #arc-line {
+        box-shadow:
+            0 0 3px  rgba(200, 230, 255, 0.45),
+            0 0 8px  rgba(106, 184, 255, 0.18),
+            0 0 18px rgba(106, 184, 255, 0.08);
+    }
+}
