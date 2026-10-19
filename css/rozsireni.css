@@ -435,3 +435,8 @@
     .cta-float[hidden] { display: none; }
     .poptavka__foot .btn { width: 100%; }
 }
+
+/* ---------- Kontakt: druhá adresa (fakturace) v jednej karte ---------- */
+/* Dlhá gmailová adresa sa v tretinovom stĺpci nezmestí — radšej zalomiť než pretiecť mimo kartu */
+.contact__card .contact__value { overflow-wrap: anywhere; }
+.contact__card--multi .contact__label + .contact__value ~ .contact__label { margin-top: 0.75rem; }
