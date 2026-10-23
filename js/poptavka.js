@@ -74,8 +74,11 @@
     }
 
     fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
-      .then(function (res) {
-        if (!res.ok) throw new Error('HTTP ' + res.status);
+      // Úspech len pri {"ok":true}. Samotný status 200 nestačí: keď PHP spadne a hosting má
+      // zapnuté zobrazovanie chýb, vráti 200 s textom chyby a človek by videl falošné „odešla“.
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (!data || data.ok !== true) throw new Error('neodoslané');
         form.reset();
         show('<strong>Děkujeme, poptávka odešla.</strong> Ozveme se vám e-mailem.', false);
       })

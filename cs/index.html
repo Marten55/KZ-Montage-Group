@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KZ Montage Group — průmyslová montáž, svařování a elektro v Ostravě</title>
+    <meta name="robots" content="noindex, nofollow">
     <meta name="description" content="Mechanická montáž, certifikované svařování (MMA, TIG, MIG/MAG) a elektroinstalace pro průmyslové výrobce. 21 let v oboru. Ostrava.">
     <meta name="theme-color" content="#0f0f10">
 
@@ -21,8 +22,6 @@
     <link rel="stylesheet" href="../css/video.css">
     <link rel="stylesheet" href="../css/rozsireni.css">
 
-    <!-- NÁHĽAD: pred nasadením na ostrý web odstrániť noindex aj pruh .nahled -->
-    <meta name="robots" content="noindex, nofollow">
 
 
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
@@ -382,6 +381,8 @@
     <!-- 5b. REFERENCE                                           -->
     <!-- ====================================================== -->
     <!-- NÁHĽAD: miesta pre vyjadrenia. Plní sa len skutočnými citátmi s menom a súhlasom, nikdy nie vymyslenými. -->
+    <!-- REFERENCIE: skryté do nasadenia 23. 10. 2026, kým Kamil nedodá vyjadrenia klientov.
+         Zapnúť = odstrániť tento komentár aj uzatvárací riadok pod sekciou a vyplniť karty.
     <section class="reference" id="reference" aria-labelledby="reference-heading">
         <div class="container">
             <header class="section-head">
@@ -404,6 +405,7 @@
             </div>
         </div>
     </section>
+    KONIEC SKRYTÝCH REFERENCIÍ -->
 
     <!-- ====================================================== -->
     <!-- 6. ABOUT                                                -->
@@ -452,8 +454,8 @@
             </header>
 
             <!--
-              Dopytový formulár. Odosiela na /poptavka.php (doplní sa podľa hostingu u Aruby).
-              data-nahled: v náhľade sa nič neodosiela, len sa ukáže potvrdenie.
+              Dopytový formulár. Odosiela na /poptavka.php, ten pošle e-mail Kamilovi.
+              Náhľad (nastroje/nahled.mjs) pridá data-nahled: vtedy sa nič neodosiela, len sa ukáže potvrdenie.
               Pole "web" je pasca na roboty (honeypot): človek ho nevidí, robot ho vyplní a server takú správu zahodí.
             -->
             <form class="poptavka" id="poptavka" action="/poptavka.php" method="post" novalidate data-nahled>
@@ -606,7 +608,6 @@
     <script src="../js/galerie.js"></script>
     <script src="../js/poptavka.js"></script>
 
-    <!-- NÁHĽAD: pred nasadením odstrániť -->
     <div class="nahled" role="note">Náhled návrhu úprav · nejde o ostrý web</div>
 </body>
 </html>

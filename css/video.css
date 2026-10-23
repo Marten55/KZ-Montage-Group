@@ -9,6 +9,10 @@
     background: var(--bg-deep);
     overflow: hidden;
 }
+/* Video natočené na výšku (YouTube Shorts). V 16:9 by ostal úzky pás s čiernymi okrajmi. */
+.video-facade-wrap--vertical {
+    aspect-ratio: 9 / 16;
+}
 .video-facade-wrap iframe {
     position: absolute;
     inset: 0;

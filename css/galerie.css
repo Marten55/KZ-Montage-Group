@@ -253,13 +253,27 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
 }
+/* Nadpis skupiny videí: spája videá s kartou tej istej zákazky vyššie v galérii */
+.galerie-videos__sub {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--text);
+    margin: 2.5rem 0 1rem;
+}
+.galerie-videos__sub:first-of-type { margin-top: 1rem; }
+/* Videá z telefónu sú na výšku. Šírka mriežky je obmedzená, inak by karta 9:16
+   na veľkej obrazovke merala skoro 700 px na výšku a jedno video by zabralo celý displej. */
+.galerie-videos__grid--vertical { max-width: 760px; }
 
 @media (max-width: 960px) {
     .galerie-videos__grid { grid-template-columns: repeat(2, 1fr); }
+    .galerie-videos__grid--vertical { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
 }
 @media (max-width: 600px) {
     .galerie-videos { padding: 3rem 0 1.5rem; }
     .galerie-videos__grid { grid-template-columns: 1fr; gap: 1.25rem; }
+    /* Na mobile 2 vedľa seba: jedno na celú šírku by bolo vyššie ako displej */
+    .galerie-videos__grid--vertical { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
 }
 
 /* ---------- Reduced motion ------------------------------------------- */
